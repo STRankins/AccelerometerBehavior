@@ -28,8 +28,6 @@
 AccelerometerBehavior <- function(species, x, y, z, data) {
   # Load randomForest package ----
   suppressMessages(require(randomForest))
-  # Load in model data ----
-  utils::data(sysdata, envir = environment())
   # Some data checks ----
   if(!x %in% names(data)) {
     stop("x is not a valid column name")
