@@ -1,4 +1,5 @@
 #' Classifying behavior
+#' Classifying behavior
 #' 
 #' Classify 5-minute segments of X, Y, Z, accelerometer data obtained from GPS 
 #' collars from moose, bighorn sheep and mule deer into three behavioral states.
@@ -20,9 +21,16 @@
 #'                       y = "ActivityX",
 #'                       z = "ActivityX",
 #'                       data = df)
+#' @import randomForest
+#' @import stats
+#' @import utils
 #' @export
 AccelerometerBehavior <- function(species, x, y, z, data) {
-  # ---- Some data checks
+  # Load randomForest package ----
+  require(randomForest)
+  # Load in model data ----
+  utils::data(sysdata, envir = environment())
+  # Some data checks ----
   if(!x %in% names(data)) {
     stop("x is not a valid column name")
   }
@@ -32,10 +40,19 @@ AccelerometerBehavior <- function(species, x, y, z, data) {
   if(!x %in% names(data)) {
     stop("z is not a valid column name")
   }
-  # Get the columns we need ----
-  x_name <- names(data)[which(names(data) == x)]
-  y_name <- names(data)[which(names(data) == y)]
-  z_name <- names(data)[which(names(data) == z)]
+  # Make sure predict knows what columns to use ----
+  if(x != "ActivityX") {
+    names(data)[which(names(data) == x)] <- "ActivityX"
+    Change_X <- TRUE
+  } 
+  if(y != "ActivityY") {
+    names(data)[which(names(data) == y)] <- "ActivityY"
+    Change_Y <- TRUE
+  } 
+  if(z != "ActivityZ") {
+    names(data)[which(names(data) == z)] <- "ActivityZ"
+    Change_Z <- TRUE
+  }
   # More data checks ----
   if(!species %in% c("mule deer", "bighorn sheep", "moose")) {
     stop("Please provide a valid species.")
@@ -43,90 +60,53 @@ AccelerometerBehavior <- function(species, x, y, z, data) {
   if(!is.data.frame(data)) {
     stop("Data is not a dataframe.")
   }
-  if(!is.numeric(data[[x_name]])) {
+  if(!is.numeric(data$ActivityX)) {
     stop("Column x is not numeric.")
   }
-  if(!is.numeric(data[[y_name]])) {
+  if(!is.numeric(data$ActivityY)) {
     stop("Column y is not numeric.")
   }
-  if(!is.numeric(data[[z_name]])) {
+  if(!is.numeric(data$ActivityZ)) {
     stop("Column z is not numeric.")
   }
-  if(any(is.na(data[[x_name]]))) {
+  if(any(is.na(data$ActivityX))) {
     stop("Column x contains NA's.")
   }
-  if(any(is.na(data[[y_name]]))) {
+  if(any(is.na(data$ActivityY))) {
     stop("Column y contains NA's.")
   }
-  if(any(is.na(data[[z_name]]))) {
+  if(any(is.na(data$ActivityZ))) {
     stop("Column z contains NA's.")
   }
   # Start of classification code ----
   if(species == "mule deer") {
     
-    data$behavior <- ifelse(data[[x_name]] < 8,
-                            "Stationary",
-                            ifelse(data[[z_name]] < 42,
-                                   "Foraging",
-                                   "Travelling"))
+    data$behavior <- stats::predict(AccelerometerBehavior:::mods$class_deer,
+                                    data)
   
     }
   if(species == "bighorn sheep") {
     
-    data$behavior <- ifelse(data[[y_name]] < 10.5,
-                            ifelse(data[[y_name]] < 2.5,
-                                   "Stationary",
-                                   ifelse(data[[y_name]] < 9.5,
-                                          ifelse(data[[z_name]] < 6,
-                                                 ifelse(data[[x_name]] < 1.5,
-                                                        "Travelling",
-                                                        "Stationary"),
-                                                 "Travelling"),
-                                          "Stationary")), 
-                            ifelse(data[[x_name]] < 59.5,
-                                   ifelse(data[[x_name]] < 26.5,
-                                          ifelse(data[[x_name]] < 20.5,
-                                                 "Stationary",
-                                                 ifelse(data[[x_name]] < 25.5,
-                                                        "Foraging",
-                                                        ifelse(data[[z_name]] < 8,
-                                                               "Foraging",
-                                                               "Travelling"))),
-                                          "Foraging"),
-                                   "Travelling"))
+    data$behavior <- stats::predict(AccelerometerBehavior:::mods$class_bighorn,
+                                    data)
     
     }
   if(species == "moose") {
    
-    data$behavior <- ifelse(data[[y_name]] < 3.5,
-                            "Stationary",
-                            ifelse(data[[x_name]] < 35.5,
-                                   ifelse(data[[y_name]] < 9.5,
-                                          ifelse(data[[y_name]] < 5.5,
-                                                 ifelse(data[[x_name]] < 17.5,
-                                                        "Stationary",
-                                                        "Foraging"),
-                                                 ifelse(data[[x_name]] < 17.5,
-                                                        "Travelling",
-                                                        ifelse(data[[z_name]] < 10.5,
-                                                               ifelse(data[[x_name]] < 26,
-                                                                      "Foraging",
-                                                                      "Stationary"),
-                                                               "Foraging"))),
-                                          "Foraging"),
-                                   ifelse(data[[x_name]] < 54,
-                                          ifelse(data[[x_name]] < 39,
-                                                 ifelse(data[[y_name]] < 30,
-                                                        "Foraging",
-                                                        "Travelling"),
-                                                 ifelse(data[[y_name]] < 31.5,
-                                                        "Foraging",
-                                                        "Travelling")),
-                                          ifelse(data[[x_name]] < 73.5,
-                                                 "Foraging",
-                                                 "Travelling"))
-                                   ))
+    data$behavior <- stats::predict(AccelerometerBehavior:::mods$class_moose,
+                                    data)
      
-    }
+  }
+  # Change column names back to original if needed ----
+  if(Change_X) {
+    names(data)[which(names(data) == "ActivityX")] <- x
+  }
+  if(Change_Y) {
+    names(data)[which(names(data) == "ActivityY")] <- y
+  }
+  if(Change_Z) {
+    names(data)[which(names(data) == "ActivityZ")] <- z
+  }
+  # return the results ----
   return(data)
 }
