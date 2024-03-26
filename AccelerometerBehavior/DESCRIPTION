@@ -3,9 +3,9 @@ Type: Package
 Title: Classify animal behavior from accelerometer data collected by GPS collars
 Version: 1.0.0
 Depends: stats, utils, randomForest
-Date: 2024-03-15
+Date: 2024-03-26
 Authors: Seth Rankins and Rachel Smiley
 Maintainer: Seth Rankins
 Description: A function to classify moose, bighorn sheep, and mule deer behavior from accelerometer data collected by GPS collars.
-License: GPL-3
+License: GPL-2
 RoxygenNote: 7.3.1
