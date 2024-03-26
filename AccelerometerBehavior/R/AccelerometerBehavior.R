@@ -44,14 +44,20 @@ AccelerometerBehavior <- function(species, x, y, z, data) {
   if(x != "ActivityX") {
     names(data)[which(names(data) == x)] <- "ActivityX"
     Change_X <- TRUE
-  } 
+  } else {
+    Change_X <- FALSE
+  }
   if(y != "ActivityY") {
     names(data)[which(names(data) == y)] <- "ActivityY"
     Change_Y <- TRUE
-  } 
+  } else {
+    Change_Y <- FALSE
+  }
   if(z != "ActivityZ") {
     names(data)[which(names(data) == z)] <- "ActivityZ"
     Change_Z <- TRUE
+  } else {
+    Change_Z <- FALSE
   }
   # More data checks ----
   if(!species %in% c("mule deer", "bighorn sheep", "moose")) {
