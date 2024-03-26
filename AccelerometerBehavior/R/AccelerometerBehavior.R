@@ -18,8 +18,8 @@
 #' # Classify the data
 #' AccelerometerBehavior(species = "moose",
 #'                       x = "ActivityX",
-#'                       y = "ActivityX",
-#'                       z = "ActivityX",
+#'                       y = "ActivityY",
+#'                       z = "ActivityZ",
 #'                       data = df)
 #' @import randomForest
 #' @import stats
@@ -27,7 +27,7 @@
 #' @export
 AccelerometerBehavior <- function(species, x, y, z, data) {
   # Load randomForest package ----
-  require(randomForest)
+  suppressMessages(require(randomForest))
   # Load in model data ----
   utils::data(sysdata, envir = environment())
   # Some data checks ----
