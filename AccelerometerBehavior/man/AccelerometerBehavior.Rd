@@ -2,7 +2,8 @@
 % Please edit documentation in R/AccelerometerBehavior.R
 \name{AccelerometerBehavior}
 \alias{AccelerometerBehavior}
-\title{Classifying behavior}
+\title{Classifying behavior
+Classifying behavior}
 \usage{
 AccelerometerBehavior(species, x, y, z, data)
 }
@@ -33,7 +34,7 @@ df <- data.frame(ActivityX = round(runif(10, 0, 255), 0),
 # Classify the data
 AccelerometerBehavior(species = "moose",
                       x = "ActivityX",
-                      y = "ActivityX",
-                      z = "ActivityX",
+                      y = "ActivityY",
+                      z = "ActivityZ",
                       data = df)
 }
