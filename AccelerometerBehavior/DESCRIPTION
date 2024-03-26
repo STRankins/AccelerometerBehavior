@@ -4,6 +4,7 @@ Version: 1.0.0
 Date: 2024-03-26
 Authors: Seth Rankins and Rachel Smiley
 Description: A function to classify moose, bighorn sheep, and mule deer behavior from accelerometer data collected by GPS collars.
+Maintainer: Seth Rankins
 License: GPL (>= 2)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
