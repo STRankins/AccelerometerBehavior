@@ -1,5 +1,5 @@
 # AccelerometerBehavior
-A package to classify moose, bighorn sheep, and mule deer behavior from accelerometer data collected by GPS collars.
+A package to classify moose, bighorn sheep, mule deer, and similar ungulate behavior from accelerometer data collected by GPS collars.
 
 **To install from GitHub:**
 
