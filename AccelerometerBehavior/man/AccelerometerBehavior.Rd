@@ -23,7 +23,7 @@ Your dataframe object with an added column named "behavior" with a the classifie
 }
 \description{
 Classify 5-minute segments of X, Y, Z, accelerometer data obtained from GPS 
-collars from moose, bighorn sheep and mule deer into three behavioral states.
+collars from moose, bighorn sheep, mule deer, and similar ungulates into three behavioral states.
 }
 \examples{
 # Create toy dataset
