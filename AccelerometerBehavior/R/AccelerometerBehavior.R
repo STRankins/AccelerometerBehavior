@@ -58,7 +58,7 @@ AccelerometerBehavior <- function(species, x, y, z, data) {
     Change_Z <- FALSE
   }
   # More data checks ----
-  if(!species %in% c("mule deer", "bighorn sheep", "moose")) {
+  if(!species %in% c("mule deer", "bighorn sheep", "moose", "ungulate")) {
     stop("Please provide a valid species.")
   }
   if(!is.data.frame(data)) {
@@ -100,7 +100,13 @@ AccelerometerBehavior <- function(species, x, y, z, data) {
     data$behavior <- stats::predict(AccelerometerBehavior:::mods$class_moose,
                                     data)
      
-  }
+    }
+  if(species == "ungulate") {
+   
+    data$behavior <- stats::predict(AccelerometerBehavior:::mods$class_ungulate,
+                                    data)
+     
+    }
   # Change column names back to original if needed ----
   if(Change_X) {
     names(data)[which(names(data) == "ActivityX")] <- x
