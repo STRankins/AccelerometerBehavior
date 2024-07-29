@@ -8,7 +8,7 @@ Classifying behavior}
 AccelerometerBehavior(species, x, y, z, data)
 }
 \arguments{
-\item{species}{The species ("moose", "bighorn sheep", or "mule deer").}
+\item{species}{The species ("moose", "bighorn sheep", "mule deer", or "ungulate").}
 
 \item{x}{The column name of the X acceleration data.}
 
