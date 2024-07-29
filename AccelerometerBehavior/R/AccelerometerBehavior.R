@@ -2,8 +2,8 @@
 #' Classifying behavior
 #' 
 #' Classify 5-minute segments of X, Y, Z, accelerometer data obtained from GPS 
-#' collars from moose, bighorn sheep and mule deer into three behavioral states.
-#' @param species The species ("moose", "bighorn sheep", or "mule deer").
+#' collars from moose, bighorn sheep, mule deer, and similar ungulates into three behavioral states.
+#' @param species The species ("moose", "bighorn sheep", "mule deer", "ungulate").
 #' @param x The column name of the X acceleration data.
 #' @param y The column name of the Y acceleration data.
 #' @param z The column name of the Z acceleration data.
