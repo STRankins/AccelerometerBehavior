@@ -18,8 +18,8 @@ worn by mule deer into three behavioral states (Foraging, stationary, and
 Travelling). Refer to Riginos et al. (2013) Mule Deer (Odocoileus hemionus) 
 Movements and Habitat Use Patterns in Relation to Roadways in Northwest 
 Wyoming for details of data collection. Prediction accuracy of the function 
-AccBehav() was 74% (95% C.I. 66-81%) and the area under the receiver 
-operating curve (AUC) was 0.92 (95% C.I. 0.88-0.95)
+AccBehav() was 74 percent (95 percent C.I. 66-81%) and the area under the receiver 
+operating curve (AUC) was 0.92 (95 percent C.I. 0.88-0.95)
 }
 \examples{
 # Create toy dataset
