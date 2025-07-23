@@ -5,8 +5,8 @@
 #' Travelling). Refer to Riginos et al. (2013) Mule Deer (Odocoileus hemionus) 
 #' Movements and Habitat Use Patterns in Relation to Roadways in Northwest 
 #' Wyoming for details of data collection. Prediction accuracy of the function 
-#' AccBehav() was 74% (95% C.I. 66-81%) and the area under the receiver 
-#' operating curve (AUC) was 0.92 (95% C.I. 0.88-0.95)
+#' AccBehav() was 74 percent (95 percent C.I. 66-81%) and the area under the receiver 
+#' operating curve (AUC) was 0.92 (95 percent C.I. 0.88-0.95)
 #' @param ActivityCount A number or vector of numbers representing the 5-minute activity count data from a Telonics GPS collar.
 #' @return The most likely behavior for the activity count value.
 #' @examples
