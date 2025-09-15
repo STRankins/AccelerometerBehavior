@@ -1,6 +1,6 @@
 Package: AccelerometerBehavior
 Title: Classify Animal Behavior From Accelerometer Data Collected by GPS Collars
-Version: 1.2.0
+Version: 2.0.0
 Date: 2025-07-16
 Authors: Seth Rankins and Rachel Smiley
 Depends: randomForest, stats
