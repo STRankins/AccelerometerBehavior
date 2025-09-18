@@ -7,7 +7,7 @@
 #' @param unit What units the input data is in. Either "g" or "m/s^2".
 #' @examples
 #' # Create toy dataset
-#' x <- round(rlnorm(50, 3, 1))
+#' x <- runif(10, 0, 1)
 #'                  
 #' # Convert the data to activity data
 #' FirstDiff2Act(x, unit = "g")
@@ -41,3 +41,4 @@ FirstDiff2Act <- function(x, unit) {
   # return the results ----
   return(vals)
 }
+
