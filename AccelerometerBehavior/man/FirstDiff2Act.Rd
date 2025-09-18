@@ -18,7 +18,7 @@ function.
 }
 \examples{
 # Create toy dataset
-x <- round(rlnorm(50, 3, 1))
+x <- runif(10, 0, 1)
                  
 # Convert the data to activity data
 FirstDiff2Act(x, unit = "g")
