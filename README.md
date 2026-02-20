@@ -10,3 +10,13 @@ A package to classify moose, bighorn sheep, mule deer, and similar ungulate beha
 (3) Install the "AccelerometerBehavior" package from GitHub with: 'install_github("STRankins/AccelerometerBehavior/AccelerometerBehavior")'.
 
 (4) Load package using 'library(AccelerometerBehavior)'.
+
+_______________________________________________________________________
+If you have:
+
+**Activity Data (5 min. increment) from Vectronics GPS collars**
+* Use 'AccelerometerBehavior()'
+  * Species available: "moose", "bighorn sheep", "mule deer", or "ungulate"
+ 
+**Activity Count Data (5 min. increment) from Telenoics GPS collars (mule deer only)**
+* Use 'AccBehav()'
